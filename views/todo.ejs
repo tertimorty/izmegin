@@ -17,9 +17,9 @@
 	<header class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="navbar-nav-scroll">
 		   	<ul class="navbar-nav bd-navbar-nav flex-row">
-			    <li id ="logotajs" class="nav-item g-signin2" data-onsuccess="onSignIn"></li>
-			    <li class="nav-item"><p class="navbar-brand" style="  margin:0em 0em 0em 1em; font-size:0.7em;" id="logins"> Pieraksties, lai lietotu</p></li>
-			    <li class="nav-item"><a style="padding:0px 25px" href="#" onclick="signOut();">Atslēgties</a></li>
+			    <li id ="logotajs" onclick="displayOauth()"; style="display:block;" class="nav-item g-signin2" data-onsuccess="onSignIn"></li>
+			    <li class="nav-item"><p class="navbar-brand" style="  margin:0em 0em 0em 1em; font-size:0.7em;" onclick="signOut();" id="logins">Izlogojies</p></li>
+			   
 		    </ul>    
 	 	</div>
 
@@ -66,7 +66,7 @@
 			<div style="background-color: #fff; margin-bottom: 0px;" class=" border rounded col-sm-12">
 				<div style="margin-bottom: 0px;" class="form-group row">
 					<div style="padding: 10px 5px 0px 10px; margin-bottom: 0px;" class="col-2">
-						<button style=" padding: 2px; background-color: #fff; color:#849cde;" onclick="tavaFun(this)" id="otraPoga<%= i+1 %>" type="button" class="btn poga "><i  class="far fa-check-circle fa-2x "></i></button>
+						<button type="submit" style=" padding: 2px; background-color: #fff; color:#849cde;" onclick="tavaFun(this)" id="otraPoga<%= i+1 %>" type="submit" class="btn poga "><i  class="far fa-check-circle fa-2x "></i></button>
 					</div>
 					<div class=" col-8 col-form-label">
 					<label for="text" style="margin-bottom: 0px; font-weight: bold;" ><%= todos[i].nosaukums %></label><br>
@@ -142,27 +142,7 @@
 	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>﻿
 
 	    <!--Oauth-->
-	    <script>
-            function onSignIn(googleUser) {
-              var profile = googleUser.getBasicProfile();
-              console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-              console.log('Name: ' + profile.getName());
-              console.log('Image URL: ' + profile.getImageUrl());
-              console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-               document.getElementById('logins').innerHTML = profile.getName() +',  '+ profile.getEmail();
-                };
-            function openWin() {
-                     window.open("https://docs.google.com/a/lido.lv/forms/d/e/1FAIpQLSejR5Vmp7_kji-XWwe2GyoXMKmZs5EZVFpo89-G3Dxzyj2TFg/viewform");
-            };
-            function setingLogs () {
-                  var myWindow = window.open ("./iestatijumi",
-                    "mywindow","menubar=0,resizable=0,width=400px,height=300px");
-   
-            };
-            function pamacibaLogs(){
-                alert("ðeit ievietot pamâcîbu kâ lietot");
-            };
-        </script>
+	    
         <script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
         <script type="text/javascript" defer="true" src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script> 
   		
@@ -170,7 +150,7 @@
   		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
         <script type="text/javascript" src="https://apis.google.com/js/platform.js" async="true" defer="true"></script>
-        <meta name="google-signin-client_id" content="332575249702-um75alajj91a9dji32pi7ddugakvgobj.apps.googleusercontent.com"></meta>
+        <meta name="google-signin-client_id" content="513341065750-rpt7nq5a5ibecm40hi8t5egr2bjtdf0f.apps.googleusercontent.com"></meta>
             
         <script src="assets/pastaisitie.js"></script>
     </footer>

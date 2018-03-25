@@ -1,20 +1,64 @@
-<!DOCTYPE html>
+
 <html>
-<head>
-	<title>Iestatījumi</title>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Komercvienības ikdienas uzdevumi</title>
 
+		<!--kautkas priekš ajax -->
+		<script src="/assets/todo-list.js"></script>
 
-</head>
+		<!--bootstrap-->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	</head>
 <body>
 <section>
 	<h1>Darba laiki</h1>
 	<div>
-		<p>Iestatītais darba laiks ir: </p><p id="darbalaiks"></p>
-
+		<% for(var i=0; i < todos.length; i++){ %>
+		<label for="text" id="sak" style="margin-bottom: 0px; font-weight: bold;" ><%= todos[i].nosaukums %></label><br>
+		<p style="display:inline;">Sakot: </p><label for="text" style="margin-bottom: 0px; font-weight: bold; display:inline;" ><%= todos[i].sakums %></label><br>
+		<p style="display:inline;">Beidzot: </p><label for="text" style="margin-bottom: 0px; font-weight: bold;" ><%= todos[i].beigas %></label>
+<% } %>
 
 	</div>
-
+<form id=create>
+  <div class="form-group">
+    <label for="sakums">Ievadiet sakuma laiku</label>
+    <input type="number" name="sakums" class="form-control" id="exampleInput" placeholder="8">
+   
+  </div>
+  <div class="form-group">
+    <label for="beigas">Ievadiet beigu laiku</label>
+    <input type="number" name="beigas" class="form-control" id="exampleInputPassword1" placeholder="23">
+  </div>
+  <div class="form-check">
+  </div>
+  <button type="submit" onclick="laikaf()" class="btn btn-primary">Atjaunot</button>
+</form>
 
 </section>
+<footer> 
+	    <!--jquery-->
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>﻿
+
+	    <!--Oauth-->
+	
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
+        <script type="text/javascript" defer="true" src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script> 
+  		
+  		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+        <script type="text/javascript" src="https://apis.google.com/js/platform.js" async="true" defer="true"></script>
+        <meta name="google-signin-client_id" content="332575249702-um75alajj91a9dji32pi7ddugakvgobj.apps.googleusercontent.com"></meta>
+            
+        <script src="assets/pastaisitie.js"></script>
+        
+
+    </footer>
 </body>
-</html>
+</html>		 
