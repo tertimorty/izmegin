@@ -108,3 +108,22 @@ console.log(formData);
             function pamacibaLogs(){
                 alert("ðeit ievietot pamâcîbu kâ lietot");
             };
+
+            function setLaiku(){
+                var d = new Date();
+                var laiks = d.getHours();
+                console.log(laiks);
+                if(laiks > 7 && laiks < 11){
+                    document.getElementById('dienasdalja').innerHTML = 'Rīts';}
+                else if (laiks > 11 && laiks < 16){
+                    document.getElementById('dienasdalja').innerHTML = 'Diena';}
+                else if (laiks > 16 && laiks < 23){
+                    document.getElementById('dienasdalja').innerHTML = 'Vakars';}
+                else {
+                     document.getElementById('dienasdalja').innerHTML = 'Nav';
+                }
+            };
+            
+        document.addEventListener('DOMContentLoaded', function() {
+  setLaiku();
+}, false);

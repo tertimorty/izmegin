@@ -13,14 +13,25 @@ var itemi = [
 	{numurs: 2, nosaukums: "Darbinieku vizuālais tēls", apraksts: "atbilst viesmīlības standartā noteiktajam (tīra forma, vārda nozīmīte)", rits: true, diena: false, vakars: true},
 	{numurs: 3, nosaukums: "Prece ir piegādāta", apraksts: "vajadzīgajos daudzumos", rits: true, diena: false, vakars: false}
 	];
-for(let i=0;i<itemi.length;i++){
-var itemPievienot = Todo(itemi[i]).save(function(err){
+
+var itemi1 = [
+	{numurs: 4, nosaukums: "Ražošans telpu sagatavotība", apraksts: "darba vietas ir tīras, aprīkojums, inventārs ir tīrs un atbilstošā tehniskā stāvoklī", rits: true, diena: false, vakars: true},
+	{numurs: 5, nosaukums: "Realizācijas laika kontrole", apraksts: "jāpārliecinās, ka darbinieki ir pārbaudījuši produktu derīguma termiņus, vai tiek ievērots FIFO princips", rits: true, diena: false, vakars: false},
+	{numurs: 6, nosaukums: "Pašražotā produkcija ir marķēta", apraksts: "atrodas tai paredzētajās vietās un ir marķēta ar atbistošu ražošanas datumu", rits: false, diena: false, vakars: true},
+	{numurs: 7, nosaukums: "Ikdienas ražošanas pierakstu veidlapas", apraksts: "ir aizpildītas un aizpildītas korekti", rits: true, diena: true, vakars: true},
+	{numurs: 8, nosaukums: "Darbinieku vizuālais tēls", apraksts: "atbilst viesmīlības standartā noteiktajam (tīra forma, vārda nozīmīte)", rits: true, diena: false, vakars: true},
+	{numurs: 9, nosaukums: "Produktu pasūtījums", apraksts: "nākamajām dienām ir veikts", rits: false, diena: true, vakars: false}
+	]
+
+
+for(let i=0;i<itemi1.length;i++){
+var itemPievienot = Todo(itemi1[i]).save(function(err){
 if(err) throw err;
 console.log('item '+ [i] + ' saved')
 });
 };
-*/
-/*var item1 = {nosaukums:'darbalaiks', sakums:8, beigas:22};
+
+var item1 = {nosaukums:'darbalaiks', sakums:8, beigas:22};
 var itemPievienot = Todo1(item1).save(function(err){
 if(err) throw err;
 console.log('item saved')
