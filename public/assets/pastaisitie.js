@@ -140,7 +140,7 @@ console.log(formData);
             function setLaiku(){
                 var d = new Date();
                 var laiks = d.getHours();
-               
+               console.log(laiks);
                 if(laiks > 7 && laiks < 11){
                     document.getElementById('dienasdalja').innerHTML = 'Rīts';
                     document.getElementById('periods').value = 'Rīts';}
@@ -157,23 +157,5 @@ console.log(formData);
 
 
 
-function checkall(){
-    date1 = new Date();
 
-        //for(let i =1; i<30; i++){
-          //  if(document.getElementById('datums'+i).value != 'null'){
-            //    document.getElementById('datums'+i).value = date1;
-            //};
-           // document.getElementById('komercvieniba'+i).value = "komercvieniba";
-            //document.getElementById('cilveks'+i).value = profile.getName();
-            //document.getElementById('periods'+i).value =  document.getElementById('dienasdalja').innerHTML;
-        //};
-};
-            
-        document.addEventListener('DOMContentLoaded', function() {
-
-
-checkall();
-  setLaiku();
-}, false);
 
