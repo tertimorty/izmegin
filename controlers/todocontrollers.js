@@ -69,7 +69,7 @@ module.exports = function(app){
 		
 		var query = {'nosaukums': nosaukums};
 		
-		Todo1.findOneAndUpdate(query, {$set:{condit: 'hg', datums: datums}}, {new: false}, function (err,data){
+		Todo1.findOneAndUpdate(query, {$set:{condit: 'aizpildits', datums: datums}}, {new: false}, function (err,data){
 				if(err) throw err;
 
 			Todo1.find({}, function(err,data){
