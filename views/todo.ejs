@@ -4,8 +4,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Komercvienības ikdienas uzdevumi</title>
 
-		<!--kautkas priekš ajax -->
-		<script src="/assets/todo-list.js"></script>
+		
 
 		<!--bootstrap-->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -18,7 +17,7 @@
 		<div class="navbar-nav-scroll">
 		   	<ul class="navbar-nav bd-navbar-nav flex-row">
 			    <li id ="logotajs" style="display:block;" class="nav-item g-signin2" data-onsuccess="onSignIn"></li>
-			    <li class="nav-item"><p class="navbar-brand" style="  margin:0em 0em 0em 1em; font-size:0.7em;" onclick="signOut();" id="logins">Izlogojies</p></li>
+			    <li class="nav-item"><p class="navbar-brand" style=" margin:0em 0em 0em 1em; font-size:0.7em;" onclick="signOut();" id="logins">Izlogojies</p></li>
 			   
 		    </ul>    
 	 	</div>
@@ -49,31 +48,31 @@
 <div class="container row" id="todo-table" style="margin:0px; padding:0px;">
 <div  class=" col-sm-0 col-md-3"></div>
 <div style= "background-color:#f4f4f4" class="col-sm-12 col-md-9">
-	<form style="display:none;" method="post">
-		<div class="form-row">
-			<div class="form-group col-sm-8">
-				<input type="text"  class="form-control" name="item" placeholder="add new text" required />
-			</div>
-			<div class="form-group col-sm-4">
-				<button type="submit" class="btn btn-primary mb-2">Add item</button>
-			</div>
-		</div>
-	</form>
+	
 
 <ul style="list-style-type:none; padding-left:5px;">
 
-<% for(var i=0; i < todos.length; i++){ %>
+<% for(var i=0; i < todos.length; i++){ 
+
+if(todos[i].condit != 'aizpildits') {
+
+%>
+
 <li id="uncompletedotraPoga<%= i+1 %>" style="display:list-item;">
-	<form style="margin-bottom: 0px;">	
+	<form style="margin-bottom: 0px;" method="post" id="form<%=i+1%>"; />
+
 		<div class="form-group row justify-content-between" style="margin-bottom: 0px;">
 			<div style="background-color: #fff; margin-bottom: 0px;" class=" border rounded col-sm-12">
 				<div style="margin-bottom: 0px;" class="form-group row">
-					<div style="padding: 10px 5px 0px 10px; margin-bottom: 0px;" class="col-2">
-						<button type="submit" style=" padding: 2px; background-color: #fff; color:#849cde;" onclick="tavaFun(this)" id="otraPoga<%= i+1 %>" type="submit" class="btn poga "><i  class="far fa-check-circle fa-2x "></i></button>
+					<div style="padding: 10px 5px 0px 10px; margin-bottom: 0px; background-color: #fff; color:#03a9f4;" class="col-2">	
+						<button type="submit" style=" padding: 2px; background-color: #fff; color:#03a9f4;" id="otraPoga<%= i+1 %>" class="btn poga "><i class="far fa-check-circle fa-2x "></i></button>
 					</div>
+
 					<div class=" col-8 col-form-label">
 					<label for="text" style="margin-bottom: 0px; font-weight: bold;" ><%= todos[i].nosaukums %></label><br>
-					<small for="text"><%= todos[i].apraksts %></small></div>
+					<small for="text"><%= todos[i].apraksts %></small>
+
+				</div>
 					<div style="padding: 10px 5px 0px 0px; margin-bottom: 0px;" class="col-2">
 						<button style=" padding: 2px;" onclick="myFunction(this)" id="prmaPoga<%= i+1 %>" type="button" class="btn btn-warning">____</button>
 					</div>
@@ -83,7 +82,22 @@
 						<button onclick="openWin()"  type="button" class=" btn-sm btn-primary">Aizpildīt formu</button>
 					</div>
 					<div  class="col-8 border">
-						<input type="text" class="form-control-plaintext rounded" id="staticText" value="Ierakstiet komentāru">
+						
+						
+						
+						<input style="display:none;" name="datums" id="datums<%=i+1%>" class="datums" value=""; />
+						<input style="display:block;" type="text" class="cilveks" name="cilveks" id="cilveks<%=i+1%>" placeholder="Ierakstiet komentāru" />
+						<input style="display:none;" type="text" class="komercvieniba" name="komercvieniba" id="komercvieniba<%=i+1%>" placeholder="Ierakstiet komentāru" />
+					<input style="display:none;" name="nosaukums" class="nosaukums" id="nosaukums<%=i+1%>" value="<%= todos[i].nosaukums %>" />
+					<input " type="text" class="form-control-plaintext rounded atbilde" name="atbilde" id="atbilde<%=i+1%>" placeholder="Ierakstiet komentāru" />
+						<input style="display:none;" name="atbilst" class="atbilst" id="atbilst<%=i+1%>" value="bez"; />
+						<input style="display:none;" name="periods" class="periods" id="periods<%=i+1%>" value=""; />
+						<input style="display:none;" name="condit" class="condit" id="condit<%=i+1%>" value="<%= todos[i].condit %>"; />
+						<input style="display:none;" name="apraksts" class="apraksts" id="apraksts<%=i+1%>" value="<%= todos[i].apraksts %>"; />
+						
+
+						
+							<input style="display:none;" name="nummurs" id="nummurs<%=i+1%>" class="nummurs" value="<%=i+1%>"; />
 					</div>
 						<small for="text" class=" col-12 ">Ierakstīt attiecīgā darbinieka vērtējuma lapā</small>
 				</div>
@@ -91,38 +105,37 @@
 		</div>
 	</form>
 </li>
-	<% } %>
+	<% }} %>
 </ul>
 <hr>
 
 <ul style="list-style-type:none; padding-left:5px;">
 
-<% for(var i=0; i < todos.length; i++){ %>
-<li style="display:none" id="completedotraPoga<%= i+1 %>">
+<% for(var i=0; i < todos.length; i++){ 
+
+if(todos[i].condit == 'aizpildits'){
+%>
+
+
+<li id="completedotraPoga<%= i+1 %>">
 	<form style="margin-bottom: 0px;">	
 		<div class="form-group row justify-content-between" style="margin-bottom: 0px; background-color: #b8b8c0">
 			<div style="background-color: #b8b8c0; margin-bottom: 0px;" class=" border rounded col-sm-12">
 				<div style="margin-bottom: 0px;" class="form-group row">
 
 					<div style="padding: 10px 5px 0px 10px; margin-bottom: 0px; background-color: #b8b8c0;" class="col-2">
-						<button style=" padding: 2px; background-color: #b8b8c0;" onclick="tavaFun2(this)" id="otraPoga<%= i+1 %>" type="button" class="btn poga "><i class="fas fa-check-circle fa-2x "></i></button>
+						<button style=" padding: 2px; background-color: #b8b8c0;" id="otraPoga<%= i+1 %>" type="submit" class="btn poga "><i class="fas fa-check-circle fa-2x "></i></button>
 					</div>
 
 					<div class=" col-8 col-form-label">
 					<label for="text" style="margin-bottom: 0px; font-weight: bold;" ><%= todos[i].nosaukums %></label><br>
 					<small for="text"><%= todos[i].apraksts %></small>
 
-
 					</div>
-
 
 					<div style="padding: 10px 5px 0px 0px; margin-bottom: 0px; " class="col-2">
 						<button style=" padding: 2px;" onclick="myFunction(this)" id="iprmaPoga<%= i+1 %>" type="button" class="btn btn-warning">____</button>
 					</div>
-
-
-					
-
 
 				</div>
 				<div class="form-group row AttprmaPoga<%= i+1 %>" style="display:none;">
@@ -138,7 +151,7 @@
 		</div>
 	</form>
 </li>
-	<% } %>
+	<% }} %>
 </ul>
 	<footer> 
 	    <!--jquery-->
@@ -156,7 +169,8 @@
         <meta name="google-signin-client_id" content="513341065750-rpt7nq5a5ibecm40hi8t5egr2bjtdf0f.apps.googleusercontent.com"></meta>
             
         <script src="assets/pastaisitie.js"></script>
-
+        <!--kautkas priekš ajax -->
+		<script src="/assets/todo-list.js"></script>
       
 
     </footer>

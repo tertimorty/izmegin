@@ -2,11 +2,11 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 mongoose.connect('mongodb://traktors:Lazanja1@ds123029.mlab.com:23029/checkliste');
-var todoSchema = new mongoose.Schema({nummurs: Number, nosaukums: String, apraksts: String, rits: Boolean, diena: Boolean, vakars: Boolean});
-var todoSchema1 = new mongoose.Schema({nosaukums: String, sakums: Number, beigas: Number});
+//var todoSchema = new mongoose.Schema({nummurs: Number, nosaukums: String, apraksts: String, rits: Boolean, diena: Boolean, vakars: Boolean});
+var todoSchema1 = new mongoose.Schema({at: String, datums: String, cilveks: String, komercvieniba: String, nosaukums: String, atbilde: String, atbilst: String, periods:String, condit:String, apraksts: String, nummurs: String});
 
 var Todo1 = mongoose.model('Todo1', todoSchema1);
-var Todo = mongoose.model('Todo', todoSchema);
+//var Todo = mongoose.model('Todo', todoSchema);
 /*
 var itemi = [
 	{numurs: 1, nosaukums: "Štata vietas", apraksts: "ir nokomplektētas, visi ir ieradušies darbā", rits: true, diena: false, vakars: false},
@@ -40,11 +40,12 @@ console.log('item saved')
 
 //prieksh formu genereshanas 
 var urlencodedParser = bodyParser.urlencoded({extended: false});
+
 module.exports = function(app){
-	
+
 	app.get('/todo', function(req, res){
 
-		Todo.find({}, function(err,data){
+		Todo1.find({}, function(err,data){
 			if(err) throw err;
 			res.render('todo',{todos: data});
 			});
@@ -57,14 +58,29 @@ module.exports = function(app){
 			}); 
 	});
 
-	app.post('/iestatijumi', function(req, res){
-		var itemPievienot = Todo1(req.body).save(function(err,data){
+	app.post('/todo', urlencodedParser, function(req, res){
+		var nosaukums = req.body.nosaukums;
+		var datums = req.body.datums;
+
+
+
+	/////
+		console.log(req.body);
+		
+		var query = {'nosaukums': nosaukums};
+		
+		Todo1.findOneAndUpdate(query, {$set:{condit: 'hg', datums: datums}}, {new: false}, function (err,data){
+				if(err) throw err;
+
+			Todo1.find({}, function(err,data){
+			if(err) throw err;
+			res.render('todo',{todos: data});
+			});
+			});  
+	});
+};
+
+	/*var itemPievienot = Todo1(req.body).save(function(err,data){
 			if(err) throw err;
 			res.json(data);
-			});
-
-
-	});
-
-	
-};
+			}); */

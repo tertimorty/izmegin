@@ -28,6 +28,25 @@ console.log(formData);
       console.log('Image URL: ' + profile.getImageUrl());
       console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
        document.getElementById('logins').innerHTML = profile.getName();
+         var d = new Date();
+    var date1 = d.toLocaleDateString();
+
+
+        for(let i =1; i<30; i++){
+            let datumsExists = document.getElementById('datums'+i);
+            if(datumsExists != null ){
+                document.getElementById('datums'+i).value = date1; };
+            let komercvienibaExists = document.getElementById('komercvieniba'+i);
+            if(komercvienibaExists != null ){
+                document.getElementById('komercvieniba'+i).value = "komercvieniba" };
+            let cilveksExists = document.getElementById('cilveks'+i);
+            if(cilveksExists != null ){
+                document.getElementById('cilveks'+i).value = profile.getName(); };
+
+            let periodsExists = document.getElementById('periods'+i);
+            if(cilveksExists != null ){
+                document.getElementById('periods'+i).value =  document.getElementById('dienasdalja').innerHTML };
+};
     };
     function signOut() {
         var auth2 = gapi.auth2.getAuthInstance();
@@ -41,26 +60,29 @@ console.log(formData);
   //custom scripts pogu krāsu mainīšanai
  function myFunction(ele){
     var id = ele.id;
+    var i = id.replace('prmaPoga','');
     var idi = 'i'+id;
+    console.log(idi);
     var idia = idi + 'area'
     var class1 = ele.className;
-    console.log(class1); 
+    
 	console.log('area element id = ' + id + 'area element class = ' + class1);
 		if (class1 == "btn btn-success") {
          document.getElementById(id).className = 'btn btn-danger';
          document.getElementById(id).innerHTML = 'Neatbilst';
-         document.getElementById(idi).className = 'btn btn-danger';
-         document.getElementById(idi).innerHTML = 'Neatbilst';
+         
          var  x = document.getElementsByClassName("Att"+id);
+        document.getElementById('atbilst'+i).value = 'Neatbilst';
+         
          console.log(x);
          x[0].style.display = 'flex';
     }
     else if ( class1 == "btn btn-warning" || class1 == "btn btn-danger"){
-         document.getElementById(idi).className = 'btn btn-success';
-         document.getElementById(idi).innerHTML = 'Atbilst';
+        
          document.getElementById(id).className = 'btn btn-success';
          document.getElementById(id).innerHTML = 'Atbilst';
           var  y = document.getElementsByClassName("Att"+id);
+          document.getElementById('atbilst'+i).value = 'Atbilst';
          console.log(y);
          y[0].style.display = 'none';
     }
@@ -85,8 +107,14 @@ console.log(formData);
 		document.getElementById(idUncomplete).style.display="none";
 		console.log(id2);
 		document.getElementById(iid2).disabled = true;
+
+        
+
+
+
+        
 	}
-	function tavaFun2(ele){
+	/*function tavaFun2(ele){
 		var id = ele.id;
 		id2 = 'prmaPoga' + id.substring(8);
 		var idComplete = 'completed'+id;
@@ -94,7 +122,7 @@ console.log(formData);
 		console.log(idComplete);
 		document.getElementById(idUncomplete).style.display="list-item";
 		document.getElementById(idComplete).style.display="none";
-		document.getElementById(id2).disabled = false;};
+		document.getElementById(id2).disabled = false;}; */
 
 
   function openWin() {
@@ -112,18 +140,40 @@ console.log(formData);
             function setLaiku(){
                 var d = new Date();
                 var laiks = d.getHours();
-                console.log(laiks);
+               
                 if(laiks > 7 && laiks < 11){
-                    document.getElementById('dienasdalja').innerHTML = 'Rīts';}
+                    document.getElementById('dienasdalja').innerHTML = 'Rīts';
+                    document.getElementById('periods').value = 'Rīts';}
                 else if (laiks > 11 && laiks < 16){
-                    document.getElementById('dienasdalja').innerHTML = 'Diena';}
+                    document.getElementById('dienasdalja').innerHTML = 'Diena';
+                    document.getElementById('periods').value = 'Diena';}
                 else if (laiks > 16 && laiks < 23){
-                    document.getElementById('dienasdalja').innerHTML = 'Vakars';}
+                    document.getElementById('dienasdalja').innerHTML = 'Vakars';
+                    document.getElementById('periods').value = 'Vakars';}
                 else {
                      document.getElementById('dienasdalja').innerHTML = 'Nav';
                 }
             };
+
+
+
+function checkall(){
+    date1 = new Date();
+
+        //for(let i =1; i<30; i++){
+          //  if(document.getElementById('datums'+i).value != 'null'){
+            //    document.getElementById('datums'+i).value = date1;
+            //};
+           // document.getElementById('komercvieniba'+i).value = "komercvieniba";
+            //document.getElementById('cilveks'+i).value = profile.getName();
+            //document.getElementById('periods'+i).value =  document.getElementById('dienasdalja').innerHTML;
+        //};
+};
             
         document.addEventListener('DOMContentLoaded', function() {
+
+
+checkall();
   setLaiku();
 }, false);
+
