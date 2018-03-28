@@ -17,7 +17,7 @@ var formData = {
       atbilst: $('#atbilst'+nummurs1).val(),
       periods: $('#periods'+nummurs1).val(),
       condition: $('#condit'+nummurs1).val() 
-      apraksts:$('#apraksts').val(),
+      apraksts:$ ('#apraksts'+nummurs1).val(),
       nummurs: $('#nummurs'+nummurs1).val(),
         };
 

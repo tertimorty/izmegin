@@ -125,37 +125,32 @@ console.log(formData);
 		document.getElementById(id2).disabled = false;}; */
 
 
-  function openWin() {
+function openWin() {
                      window.open("https://docs.google.com/a/lido.lv/forms/d/e/1FAIpQLSejR5Vmp7_kji-XWwe2GyoXMKmZs5EZVFpo89-G3Dxzyj2TFg/viewform");
             };
-            function setingLogs () {
+function setingLogs () {
                   var myWindow = window.open ("./iestatijumi",
                     "mywindow","menubar=0,resizable=0,width=600px,height=600px");
    
             };
-            function pamacibaLogs(){
+function pamacibaLogs(){
                 alert("ðeit ievietot pamâcîbu kâ lietot");
             };
 
-            function setLaiku(){
+function uzliktLaiku(){
                 var d = new Date();
                 var laiks = d.getHours();
                console.log(laiks);
-                if(laiks > 7 && laiks < 11){
-                    document.getElementById('dienasdalja').innerHTML = 'Rīts';
-                    document.getElementById('periods').value = 'Rīts';}
+                if ( laiks <= 11){
+                    document.getElementById('dienasdalja').innerHTML = 'Rīts';}
                 else if (laiks > 11 && laiks < 16){
-                    document.getElementById('dienasdalja').innerHTML = 'Diena';
-                    document.getElementById('periods').value = 'Diena';}
-                else if (laiks > 16 && laiks < 23){
-                    document.getElementById('dienasdalja').innerHTML = 'Vakars';
-                    document.getElementById('periods').value = 'Vakars';}
+                    document.getElementById('dienasdalja').innerHTML = 'Diena';}
+                else if (laiks > 16 && laiks <  23){
+                    document.getElementById('dienasdalja').innerHTML = 'Vakars';}
                 else {
                      document.getElementById('dienasdalja').innerHTML = 'Nav';
                 }
             };
-
-
 
 
 

@@ -11,6 +11,9 @@
 		    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+		 <script src="assets/pastaisitie.js"></script>
+
 	</head>
 <body style="padding:5px;">
 	<header class="navbar navbar-expand-lg navbar-light bg-light">
@@ -22,7 +25,7 @@
 		    </ul>    
 	 	</div>
 
-	 	<div id="dienasdalja" onClick="setLaiku()"; style=" left: 50%; position: sticky; margin-top: 10px;">Rīts</div>
+	 	<div id="dienasdalja" onclick="uzliktLaiku()"; style=" left: 50%; position: sticky; margin-top: 10px;">Diena</div>
 	 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 	    	<span class="navbar-toggler-icon"></span> 
 		</button>
@@ -54,7 +57,7 @@
 
 <% for(var i=0; i < todos.length; i++){ 
 
-if(todos[i].condit != 'aizpildits') {
+if(todos[i].periods == "Diena" && todos[i].condit !== "Izpildīts" ) {
 
 %>
 
@@ -113,7 +116,7 @@ if(todos[i].condit != 'aizpildits') {
 
 <% for(var i=0; i < todos.length; i++){ 
 
-if(todos[i].condit == 'aizpildits'){
+if(todos[i].periods == 'Diena' && todos[i].condit == "Izpildīts" ){
 %>
 
 
@@ -124,7 +127,7 @@ if(todos[i].condit == 'aizpildits'){
 				<div style="margin-bottom: 0px;" class="form-group row">
 
 					<div style="padding: 10px 5px 0px 10px; margin-bottom: 0px; background-color: #b8b8c0;" class="col-2">
-						<button style=" padding: 2px; background-color: #b8b8c0;" id="otraPoga<%= i+1 %>" type="submit" class="btn poga "><i class="fas fa-check-circle fa-2x "></i></button>
+						<button style=" padding: 2px; background-color: #b8b8c0;" id="otraPoga<%= i+1 %>"  class="btn poga "><i class="fas fa-check-circle fa-2x "></i></button>
 					</div>
 
 					<div class=" col-8 col-form-label">
@@ -168,7 +171,7 @@ if(todos[i].condit == 'aizpildits'){
         <script type="text/javascript" src="https://apis.google.com/js/platform.js" async="true" defer="true"></script>
         <meta name="google-signin-client_id" content="513341065750-rpt7nq5a5ibecm40hi8t5egr2bjtdf0f.apps.googleusercontent.com"></meta>
             
-        <script src="assets/pastaisitie.js"></script>
+       
         <!--kautkas priekš ajax -->
 		<script src="/assets/todo-list.js"></script>
       
