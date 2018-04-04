@@ -79,7 +79,7 @@ module.exports = function(app){
 
 		Todo2.find({
 			$or:[
-          		//{ $and: [{datums: ''}, {periods: ''}] },
+          		{ $and: [{datums: ''}, {periods: ''}] },
           		{ $and: [{datums: today}, {periods: dalja}] }
       			]
 		}, function(err,data){
