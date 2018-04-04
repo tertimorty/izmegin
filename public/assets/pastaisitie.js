@@ -13,11 +13,13 @@ function onSignIn(googleUser) {
 document.getElementById('logins').innerHTML = profile.getName();   
 
  for(let i =1; i<80; i++){
+    console.log(i);
     let pirmExists = document.getElementById('uncompletedotraPoga'+i);
     if(pirmExists != null ){
         let nosaukums1 = document.getElementById('nosaukums'+i).value;
        
         for(let j =1; j<80; j++){
+            console.log(j);
             let compExists = document.getElementById('completedotraPoga'+j);
             let nosaukums = '';
             if(compExists != null ){
@@ -25,6 +27,7 @@ document.getElementById('logins').innerHTML = profile.getName();
         
             if(nosaukums1 === nosaukums){
                  j = 80
+
             }else if (j == 79){
                 document.getElementById('uncompletedotraPoga'+i).style.display="list-item";
             }  
