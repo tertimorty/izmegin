@@ -31,7 +31,14 @@ document.getElementById('logins').innerHTML = profile.getName();
     }
  }
 
-
+console.log('shis vispar strada');
+let d = new Date();
+    let laiks = d.getHours();
+ $.ajax({
+        type: 'POST',
+        url: '/laiks',
+        data: {laiks: laiks},
+        });
 
 
  for(let i =1; i<100; i++){
@@ -104,6 +111,7 @@ function uzliktLaiku(){
               
     let d = new Date();
     let laiks = d.getHours();
+
     if ( laiks <= 11){
         document.getElementById('dienasdalja').innerHTML = 'Rīts'}
     else if (laiks > 11 && laiks < 16){

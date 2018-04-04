@@ -60,17 +60,26 @@ console.log('item saved')
 var urlencodedParser = bodyParser.urlencoded({extended: false});
 
 module.exports = function(app){
+var laiks = '';
+	app.post('/laiks', urlencodedParser, function(req, res){
+		laiks = req.body.laiks;
+	
+	console.log('laiks ir: ' + laiks);
+	});
+
 
 	app.get('/todo', function(req, res){
+
+
 	var dalja = '';
  	let d = new Date();
-    let laiks = d.getHours();
-    console.log(laiks);
-    if ( laiks <= 11){
+    //let laiks = d.getHours() + 3;
+    
+    if ( laiks <= 12){
          dalja = 'Rīts'}
-    else if (laiks > 11 && laiks < 16){
+    else if (laiks > 12 && laiks < 15){
         dalja = 'Diena'}
-    else if (laiks > 16 && laiks <  23){
+    else if (laiks > 15 && laiks <  23){
         dalja = 'Vakars'}
        console.log(dalja);
 //datums iso formātā, lai var atfiltrēti tikai shodien aizpildītos
@@ -120,11 +129,11 @@ module.exports = function(app){
 		var apraksts = req.body.apraksts;
 		var condit = ""
 
-var itemPievienot = Todo2(req.body).save({new: true}, function(err,data){
-			if(err) throw err;
+//var itemPievienot = Todo2(req.body).save({new: true}, function(err,data){
+			//if(err) throw err;
 			console.log(req.body);
-			res.json(data);
-			});
+			//res.json(data);
+			//});
 
 	/////
 		

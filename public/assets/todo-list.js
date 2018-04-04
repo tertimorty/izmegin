@@ -1,8 +1,6 @@
 $(document).ready(function(){
 
 
-
-
   $('form').on('submit', function(){
       //var item = $('#staticText').val();
       //var todo = {item: item.val()};
@@ -28,7 +26,7 @@ $(document).ready(function(){
         url: '/todo',
         data: formData,
         success: function(data){
-           location.reload();
+          
           //do something with the data via front-end framework
         }
       });
