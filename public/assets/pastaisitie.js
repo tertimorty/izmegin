@@ -1,5 +1,7 @@
 
-
+//jkdhglkjfdhglkjdfshgkljsdfhgkjdfshgkjdsfhgjsdfhgkjsdfghkjsdfghskjdfghsdfjghsdfkjghsdfjkghdjskghsdlkjghsdkjghsjdghsdjfghsdjghfsdjg
+//f;lgkjdfslgkjdfsjghsfjkhg;lskjgļfsdjgjkdglkjsdfg;ljkdsflg;kjsdf;glhjsd;lgjsdflkhgl;sdlkfhg;lksgh;lksjgh
+//sdfgkjdsfhlkjsh;khj;lksdjj;hslkjfkjs;lgkjs;lkgj;slkgj;slkj;lsj;lskj;glsj;lgksjlgksls;lkjs;lkjg;lksj;glkjdflk
   
 
 function onSignIn(googleUser) {
@@ -10,17 +12,17 @@ function onSignIn(googleUser) {
   console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.   
 document.getElementById('logins').innerHTML = profile.getName();   
 
- for(let i =1; i<30; i++){
+ for(let i =1; i<80; i++){
     let pirmExists = document.getElementById('uncompletedotraPoga'+i);
     if(pirmExists != null ){
         let nosaukums1 = document.getElementById('nosaukums'+i).value;
-        console.log(nosaukums1);
+       
         for(let j =1; j<80; j++){
             let compExists = document.getElementById('completedotraPoga'+j);
             let nosaukums = '';
             if(compExists != null ){
             nosaukums = document.getElementById('completedNosaukums'+j).innerHTML;}
-        console.log(nosaukums);
+        
             if(nosaukums1 === nosaukums){
                  j = 80
             }else if (j == 79){
