@@ -1,9 +1,4 @@
 
-//jkdhglkjfdhglkjdfshgkljsdfhgkjdfshgkjdsfhgjsdfhgkjsdfghkjsdfghskjdfghsdfjghsdfkjghsdfjkghdjskghsdlkjghsdkjghsjdghsdjfghsdjghfsdjg
-//f;lgkjdfslgkjdfsjghsfjkhg;lskjgļfsdjgjkdglkjsdfg;ljkdsflg;kjsdf;glhjsd;lgjsdflkhgl;sdlkfhg;lksgh;lksjgh
-//sdfgkjdsfhlkjsh;khj;lksdjj;hslkjfkjs;lgkjs;lkgj;slkgj;slkj;lsj;lskj;glsj;lgksjlgksls;lkjs;lkjg;lksj;glkjdflk
-  
-
 function onSignIn(googleUser) {
   var profile = googleUser.getBasicProfile();
   console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
@@ -19,7 +14,7 @@ document.getElementById('logins').innerHTML = profile.getName();
         let nosaukums1 = document.getElementById('nosaukums'+i).value;
        
         for(let j =1; j<80; j++){
-            console.log(j);
+           
             let compExists = document.getElementById('completedotraPoga'+j);
             let nosaukums = '';
             if(compExists != null ){

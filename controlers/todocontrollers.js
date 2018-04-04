@@ -84,7 +84,7 @@ module.exports = function(app){
       			]
 		}, function(err,data){
 			if(err) throw err;
-
+			console.log(data);
 			res.render('todo',{todos: data});
 			
 			});
