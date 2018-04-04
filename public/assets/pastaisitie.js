@@ -111,12 +111,12 @@ function uzliktLaiku(){
               
     let d = new Date();
     let laiks = d.getHours();
-
-    if ( laiks <= 11){
+    console.log('laiks ir: ' + laiks);
+    if ( laiks <= 12){
         document.getElementById('dienasdalja').innerHTML = 'Rīts'}
-    else if (laiks > 11 && laiks < 16){
+    else if (laiks > 12 && laiks < 15){
         document.getElementById('dienasdalja').innerHTML = 'Diena'}
-    else if (laiks > 16 && laiks <  23){
+    else if (laiks > 15 && laiks <  23){
         document.getElementById('dienasdalja').innerHTML = 'Vakars'}
     else {
          document.getElementById('dienasdalja').innerHTML = 'Nav'}

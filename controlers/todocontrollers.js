@@ -81,7 +81,6 @@ var laiks = '';
         dalja = 'Diena'}
     else if (laiks > 15 && laiks <  23){
         dalja = 'Vakars'}
-       console.log(dalja);
 //datums iso formātā, lai var atfiltrēti tikai shodien aizpildītos
 
 		var today = new Date().toISOString().split('T')[0];
