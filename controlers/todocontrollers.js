@@ -65,6 +65,7 @@ module.exports = function(app){
 	var dalja = '';
  	let d = new Date();
     let laiks = d.getHours();
+    console.log(laiks);
     if ( laiks <= 11){
          dalja = 'Rīts'}
     else if (laiks > 11 && laiks < 16){
