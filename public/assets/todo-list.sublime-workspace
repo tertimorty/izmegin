@@ -143,33 +143,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "/C/Users/kaspa/Desktop/myApp/node-js-playlist/views/todo.ejs",
-			"settings":
-			{
-				"buffer_size": 11379,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/Users/kaspa/Desktop/myApp/node-js-playlist/app.js",
-			"settings":
-			{
-				"buffer_size": 577,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/Users/kaspa/Desktop/myApp/node-js-playlist/controlers/todocontrollers.js",
-			"settings":
-			{
-				"buffer_size": 1159,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -203,15 +176,12 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Users/kaspa/Desktop/myApp/node-js-playlist",
-		"/C/Users/kaspa/Desktop/myApp/node-js-playlist/controlers",
-		"/C/Users/kaspa/Desktop/myApp/node-js-playlist/public",
-		"/C/Users/kaspa/Desktop/myApp/node-js-playlist/public/assets",
-		"/C/Users/kaspa/Desktop/myApp/node-js-playlist/views",
-		"/C/Users/kaspa/Desktop/myApp/node-js-playlist/views/partials"
 	],
 	"file_history":
 	[
+		"/C/Users/kaspa/Desktop/myApp/node-js-playlist/controlers/todocontrollers.js",
+		"/C/Users/kaspa/Desktop/myApp/node-js-playlist/app.js",
+		"/C/Users/kaspa/Desktop/myApp/node-js-playlist/views/todo.ejs",
 		"/C/Users/kaspa/Desktop/myApp/node-js-playlist/views/partials/footer.ejs",
 		"/C/Users/kaspa/Desktop/myApp/node-js-playlist/views/partials/header.ejs",
 		"/C/Users/kaspa/Desktop/myApp/node-js-playlist/public/assets/todo-list.js",
@@ -221,7 +191,6 @@
 		"/C/Users/kaspa/Desktop/Nodep/views/index.ejs",
 		"/C/Users/kaspa/Desktop/Nodep/skripti.js",
 		"/C/Users/kaspa/Desktop/myApp/node-js-playlist/public/app.js",
-		"/C/Users/kaspa/Desktop/myApp/node-js-playlist/app.js",
 		"/C/Users/kaspa/Desktop/myApp/node-js-playlist/README.md",
 		"/C/Users/kaspa/Desktop/myApp/node-js-playlist/package.json",
 		"/C/Users/kaspa/Desktop/Nodep/package.json",
@@ -316,93 +285,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "/C/Users/kaspa/Desktop/myApp/node-js-playlist/views/todo.ejs",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 11379,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2692,
-								2692
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 450.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "/C/Users/kaspa/Desktop/myApp/node-js-playlist/app.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 577,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								577,
-								577
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "/C/Users/kaspa/Desktop/myApp/node-js-playlist/controlers/todocontrollers.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1159,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								476,
-								476
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				}
 			]
 		}
 	],

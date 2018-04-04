@@ -1,0 +1,33 @@
+<% include partials/head %>
+	<header class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="navbar-nav-scroll">
+		   	<ul class="navbar-nav bd-navbar-nav flex-row">
+			    <li id ="logotajs" style="display:block;" class="nav-item g-signin2" data-onsuccess="onSignIn"></li>
+			    <li class="nav-item"><p class="navbar-brand" style=" margin:0em 0em 0em 1em; font-size:0.7em;" onclick="signOut();" id="logins">Izlogojies</p></li>  
+		    </ul>    
+	 	</div>
+
+	 	<div id="apkopojums" style=" left: 50%; position: sticky; margin-top: 10px;">Apkopojums</div>
+	 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+	    	<span class="navbar-toggler-icon"></span> 
+		</button>
+	 	<div class="collapse navbar-collapse" id="navbarNavDropdown">
+	  		<ul class="navbar-nav flex-row ml-md-auto d-md-flex" style="font-size:2em; color:Tomato; padding-right: 25px;">
+	 
+			    <li class="nav-item ">
+			  		<button style=" padding: 2px;" id="apkopojums" type="button" class="btn"><a href="/todo">Home</a></button>
+			    </li>
+			    <li class="nav-item ">
+			     	<i class="fas fa-bug " title="pamâcîba" onclick="pamacibaLogs()"></i>
+			    </li>
+			    <li class="nav-item ">
+			    	<i class="fas fa-cog" title="iestatîjumi" onclick="setingLogs()"></i>
+			    </li>
+			     <li class="nav-item ">
+			    	<label>Komercvienība</label>
+			    </li>
+		  	</ul>
+	  	</div>
+	</header>
+
+<% include partials/footer %>

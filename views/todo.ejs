@@ -1,21 +1,7 @@
-<html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Komercvienības ikdienas uzdevumi</title>
+<% include partials/head %>
 
-		
 
-		<!--bootstrap-->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-		    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-		 <script src="assets/pastaisitie.js"></script>
-
-	</head>
-<body style="padding:5px;">
+<body style="padding:5px;" onload="uzliktLaiku()">
 	<header class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="navbar-nav-scroll">
 		   	<ul class="navbar-nav bd-navbar-nav flex-row">
@@ -25,7 +11,7 @@
 		    </ul>    
 	 	</div>
 
-	 	<div id="dienasdalja" onclick="uzliktLaiku()"; style=" left: 50%; position: sticky; margin-top: 10px;">Diena</div>
+	 	<div id="dienasdalja" onclick="neradamJauAizpilditos()"; style=" left: 50%; position: sticky; margin-top: 10px;">Diena</div>
 	 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 	    	<span class="navbar-toggler-icon"></span> 
 		</button>
@@ -33,7 +19,7 @@
 	  		<ul class="navbar-nav flex-row ml-md-auto d-md-flex" style="font-size:2em; color:Tomato; padding-right: 25px;">
 	 
 			    <li class="nav-item ">
-			  		<i class="fas fa-beer" title="apkopojums"></i>
+			  		<button style=" padding: 2px;" onclick="#" id="apkopojums" type="button" class="btn"><a href="/apkopojums">Apkopojums</a></button>
 			    </li>
 			    <li class="nav-item ">
 			     	<i class="fas fa-bug " title="pamâcîba" onclick="pamacibaLogs()"></i>
@@ -55,20 +41,19 @@
 
 <ul style="list-style-type:none; padding-left:5px;">
 
-<% for(var i=0; i < todos.length; i++){ 
-
-if(todos[i].periods == "Diena" && todos[i].condit !== "Izpildīts" ) {
-
+<% var j = 0;      
+for(var i=0; i < todos.length; i++){ 
+j = j+1;
 %>
 
-<li id="uncompletedotraPoga<%= i+1 %>" style="display:list-item;">
-	<form style="margin-bottom: 0px;" method="post" id="form<%=i+1%>"; />
+<li id="uncompletedotraPoga<%= i+1 %>" style="display:none;">
+	<form style="margin-bottom: 0px;" method="post" id="form<%=j%>"; />
 
 		<div class="form-group row justify-content-between" style="margin-bottom: 0px;">
 			<div style="background-color: #fff; margin-bottom: 0px;" class=" border rounded col-sm-12">
 				<div style="margin-bottom: 0px;" class="form-group row">
 					<div style="padding: 10px 5px 0px 10px; margin-bottom: 0px; background-color: #fff; color:#03a9f4;" class="col-2">	
-						<button type="submit" style=" padding: 2px; background-color: #fff; color:#03a9f4;" id="otraPoga<%= i+1 %>" class="btn poga "><i class="far fa-check-circle fa-2x "></i></button>
+						<button type="submit" style=" padding: 2px; background-color: #fff; color:#03a9f4;" id="otraPoga<%=j%>" class="btn poga "><i class="far fa-check-circle fa-2x "></i></button>
 					</div>
 
 					<div class=" col-8 col-form-label">
@@ -77,10 +62,11 @@ if(todos[i].periods == "Diena" && todos[i].condit !== "Izpildīts" ) {
 
 				</div>
 					<div style="padding: 10px 5px 0px 0px; margin-bottom: 0px;" class="col-2">
-						<button style=" padding: 2px;" onclick="myFunction(this)" id="prmaPoga<%= i+1 %>" type="button" class="btn btn-warning">____</button>
+						<button style=" padding: 2px;" onclick="myFunction(this)" id="prmaPoga<%=j%>" type="button" class="btn btn-warning">____</button>
 					</div>
 				</div>
-				<div class="form-group row AttprmaPoga<%= i+1 %>" style="display:none;">
+
+				<div class="form-group row AttprmaPoga<%=j%>" style="display:none;">
 					<div class="col-4">
 						<button onclick="openWin()"  type="button" class=" btn-sm btn-primary">Aizpildīt formu</button>
 					</div>
@@ -88,19 +74,19 @@ if(todos[i].periods == "Diena" && todos[i].condit !== "Izpildīts" ) {
 						
 						
 						
-						<input style="display:none;" name="datums" id="datums<%=i+1%>" class="datums" value=""; />
-						<input style="display:none;" type="text" class="cilveks" name="cilveks" id="cilveks<%=i+1%>" placeholder="Ierakstiet komentāru" />
-						<input style="display:none;" type="text" class="komercvieniba" name="komercvieniba" id="komercvieniba<%=i+1%>" placeholder="Ierakstiet komentāru" />
-					<input style="display:none;" name="nosaukums" class="nosaukums" id="nosaukums<%=i+1%>" value="<%= todos[i].nosaukums %>" />
-					<input " type="text" class="form-control-plaintext rounded atbilde" name="atbilde" id="atbilde<%=i+1%>" placeholder="Ierakstiet komentāru" />
-						<input style="display:none;" name="atbilst" class="atbilst" id="atbilst<%=i+1%>" value="bez"; />
-						<input style="display:none;" name="periods" class="periods" id="periods<%=i+1%>" value=""; />
-						<input style="display:none;" name="condit" class="condit" id="condit<%=i+1%>" value="<%= todos[i].condit %>"; />
-						<input style="display:none;" name="apraksts" class="apraksts" id="apraksts<%=i+1%>" value="<%= todos[i].apraksts %>"; />
+						<input style="display:none;" name="datums" id="datums<%=j%>" class="datums" value=""; />
+						<input style="display:none;" type="text" class="cilveks" name="cilveks" id="cilveks<%=j%>" placeholder="Ierakstiet komentāru" />
+						<input style="display:none;" type="text" class="komercvieniba" name="komercvieniba" id="komercvieniba<%=j%>" placeholder="Ierakstiet komentāru" />
+					<input style="display:none;" name="nosaukums" class="nosaukums" id="nosaukums<%=j%>" value="<%= todos[i].nosaukums %>" />
+					<input " type="text" class="form-control-plaintext rounded atbilde" name="atbilde" id="atbilde<%=j%>" placeholder="Ierakstiet komentāru" />
+						<input style="display:none;" name="atbilst" class="atbilst" id="atbilst<%=j%>" value="____"; />
+						<input style="display:none;" name="periods" class="periods" id="periods<%=j%>" value=""; />
+						<input style="display:none;" name="condit" class="condit" id="condit<%=j%>" value="<%= todos[i].condit %>"; />
+						<input style="display:none;" name="apraksts" class="apraksts" id="apraksts<%=j%>" value="<%= todos[i].apraksts %>"; />
 						
 
 						
-							<input style="display:none;" name="nummurs" id="nummurs<%=i+1%>" class="nummurs" value="<%=i+1%>"; />
+							<input style="display:none;" name="nummurs" id="nummurs<%=j%>" class="nummurs" value="<%=j%>"; />
 					</div>
 						<small for="text" class=" col-12 ">Ierakstīt attiecīgā darbinieka vērtējuma lapā</small>
 				</div>
@@ -108,47 +94,49 @@ if(todos[i].periods == "Diena" && todos[i].condit !== "Izpildīts" ) {
 		</div>
 	</form>
 </li>
-	<% }} %>
+	<% } %>
 </ul>
 <hr>
 
 <ul style="list-style-type:none; padding-left:5px;">
 
-<% for(var i=0; i < todos.length; i++){ 
+<% var j = 0;
+console.log(todos.length); 
+for(var i=0; i < todos.length; i++){ 
 
-if(todos[i].periods == 'Diena' && todos[i].condit == "Izpildīts" ){
+j = j+1;
+if(todos[i].datums !== "" ){
 %>
 
 
-<li id="completedotraPoga<%= i+1 %>">
+<li id="completedotraPoga<%= j %>">
 	<form style="margin-bottom: 0px;">	
 		<div class="form-group row justify-content-between" style="margin-bottom: 0px; background-color: #b8b8c0">
 			<div style="background-color: #b8b8c0; margin-bottom: 0px;" class=" border rounded col-sm-12">
 				<div style="margin-bottom: 0px;" class="form-group row">
 
 					<div style="padding: 10px 5px 0px 10px; margin-bottom: 0px; background-color: #b8b8c0;" class="col-2">
-						<button style=" padding: 2px; background-color: #b8b8c0;" id="otraPoga<%= i+1 %>"  class="btn poga "><i class="fas fa-check-circle fa-2x "></i></button>
+						<button style=" padding: 2px; background-color: #b8b8c0;" id="otraPoga<%= j %>"  class="btn poga "><i class="fas fa-check-circle fa-2x "></i></button>
 					</div>
 
 					<div class=" col-8 col-form-label">
-					<label for="text" style="margin-bottom: 0px; font-weight: bold;" ><%= todos[i].nosaukums %></label><br>
+					<label for="text" id="completedNosaukums<%= j %>" style="margin-bottom: 0px; font-weight: bold;" ><%= todos[i].nosaukums %></label><br>
 					<small for="text"><%= todos[i].apraksts %></small>
 
 					</div>
 
 					<div style="padding: 10px 5px 0px 0px; margin-bottom: 0px; " class="col-2">
-						<button style=" padding: 2px;" onclick="myFunction(this)" id="iprmaPoga<%= i+1 %>" type="button" class="btn btn-warning">____</button>
+						<button style=" padding: 2px;" id="krasuPoga<%=j%>" type="button" class="btn btn-warning"><%= todos[i].atbilst %></button>
 					</div>
 
 				</div>
-				<div class="form-group row AttprmaPoga<%= i+1 %>" style="display:none;">
+				<div class="form-group row AttprmaPoga<%=j%>" style="display:none;">
 					<div class="col-4">
-						<button onclick="openWin()"  type="button" class=" btn-sm btn-primary">Aizpildīt formu</button>
+						
 					</div>
 					<div  class="col-8 border">
-						<input type="text" class="form-control-plaintext rounded" id="staticText" value="Ierakstiet komentāru">
+						<input type="text" class="form-control-plaintext rounded" id="staticText" value="<%= todos[i].atbilde %>">
 					</div>
-						<small for="text" class=" col-12 ">Ierakstīt attiecīgā darbinieka vērtējuma lapā</small>
 				</div>
 			</div>
 		</div>
@@ -156,26 +144,5 @@ if(todos[i].periods == 'Diena' && todos[i].condit == "Izpildīts" ){
 </li>
 	<% }} %>
 </ul>
-	<footer> 
-	    <!--jquery-->
-	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>﻿
-
-	    <!--Oauth-->
-	    
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
-        <script type="text/javascript" defer="true" src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script> 
-  		
-  		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-        <script type="text/javascript" src="https://apis.google.com/js/platform.js" async="true" defer="true"></script>
-        <meta name="google-signin-client_id" content="513341065750-rpt7nq5a5ibecm40hi8t5egr2bjtdf0f.apps.googleusercontent.com"></meta>
-            
-       
-        <!--kautkas priekš ajax -->
-		<script src="/assets/todo-list.js"></script>
-      
-
-    </footer>
-</body>
-</html>		 
+	
+<% include partials/footer %>

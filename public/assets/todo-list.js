@@ -6,31 +6,36 @@ $(document).ready(function(){
   $('form').on('submit', function(){
       //var item = $('#staticText').val();
       //var todo = {item: item.val()};
-       nummurs1: $('.nummurs').val()
-var formData = {
+     var user_id = $(this).closest("form").attr('id');
       
-      datums: $('#datums'+nummurs1).val(),
-      cilveks: $('#cilveks'+nummurs1).val(),
-      komercvieniba: $('#komercvieniba'+nummurs1).val(),
-      nosaukums: $('#nosaukums'+nummurs1).val(),
-      atbilde: $('#atbilde'+nummurs1).val(),
-      atbilst: $('#atbilst'+nummurs1).val(),
-      periods: $('#periods'+nummurs1).val(),
-      condition: $('#condit'+nummurs1).val() 
-      apraksts:$ ('#apraksts'+nummurs1).val(),
-      nummurs: $('#nummurs'+nummurs1).val(),
-        };
+      var tabId = user_id.split("form").pop();
+      console.log(tabId);
+      var formData = {
+        datums: $('#datums'+tabId).val(),
+        cilveks: $('#cilveks'+tabId).val(),
+        komercvieniba: $('#komercvieniba'+tabId).val(),
+        nosaukums: $('#nosaukums'+tabId).val(),
+        atbilde: $('#atbilde'+tabId).val(),
+        atbilst: $('#atbilst'+tabId).val(),
+        periods: $('#periods'+tabId).val(),
+        apraksts:$ ('#apraksts'+tabId).val(),
+        nummurs: $('#nummurs'+tabId).val()
+      };
+      console.log(formData);
 
       $.ajax({
         type: 'POST',
         url: '/todo',
         data: formData,
         success: function(data){
-          location.reload();
+           location.reload();
           //do something with the data via front-end framework
         }
       });
       return false;
+  });
+});
+
       /*
       $('#form1').on('submit', function(){
       //var item = $('#staticText').val();
@@ -95,7 +100,6 @@ var formData = {
     return false; // cancel original event to prevent form submittin
       });
  */
-});
 
 /*$(document).ready(function(){
 
