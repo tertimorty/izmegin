@@ -10,20 +10,20 @@ function onSignIn(googleUser) {
   console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.   
 document.getElementById('logins').innerHTML = profile.getName();   
 
- for(let i =1; i<40; i++){
+ for(let i =1; i<30; i++){
     let pirmExists = document.getElementById('uncompletedotraPoga'+i);
     if(pirmExists != null ){
         let nosaukums1 = document.getElementById('nosaukums'+i).value;
         console.log(nosaukums1);
-        for(let j =1; j<40; j++){
+        for(let j =1; j<80; j++){
             let compExists = document.getElementById('completedotraPoga'+j);
             let nosaukums = '';
             if(compExists != null ){
             nosaukums = document.getElementById('completedNosaukums'+j).innerHTML;}
         console.log(nosaukums);
             if(nosaukums1 === nosaukums){
-                 j = 40
-            }else if (j == 39){
+                 j = 80
+            }else if (j == 79){
                 document.getElementById('uncompletedotraPoga'+i).style.display="list-item";
             }  
         }
