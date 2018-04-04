@@ -8,7 +8,7 @@ function onSignIn(googleUser) {
 document.getElementById('logins').innerHTML = profile.getName();   
 
  for(let i =1; i<80; i++){
-    console.log(i);
+   
     let pirmExists = document.getElementById('uncompletedotraPoga'+i);
     if(pirmExists != null ){
         let nosaukums1 = document.getElementById('nosaukums'+i).value;

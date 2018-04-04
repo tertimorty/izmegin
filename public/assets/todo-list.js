@@ -7,7 +7,7 @@ $(document).ready(function(){
      var user_id = $(this).closest("form").attr('id');
       
       var tabId = user_id.split("form").pop();
-      console.log(tabId);
+     
       var formData = {
         datums: $('#datums'+tabId).val(),
         cilveks: $('#cilveks'+tabId).val(),
@@ -19,14 +19,14 @@ $(document).ready(function(){
         apraksts:$ ('#apraksts'+tabId).val(),
         nummurs: $('#nummurs'+tabId).val()
       };
-      console.log(formData);
+     
 
       $.ajax({
         type: 'POST',
         url: '/todo',
         data: formData,
         success: function(data){
-          
+          location.reload();
           //do something with the data via front-end framework
         }
       });

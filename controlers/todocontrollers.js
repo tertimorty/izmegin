@@ -128,11 +128,11 @@ var laiks = '';
 		var apraksts = req.body.apraksts;
 		var condit = ""
 
-//var itemPievienot = Todo2(req.body).save({new: true}, function(err,data){
-			//if(err) throw err;
+	var itemPievienot = Todo2(req.body).save({new: true}, function(err,data){
+			if(err) throw err;
 			console.log(req.body);
-			//res.json(data);
-			//});
+			res.json(data);
+			});
 
 	/////
 		
