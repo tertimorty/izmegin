@@ -81,7 +81,7 @@ function myFunction(ele){
 
         let valueExists = document.getElementById(atbildeID);
         if(valueExists != null){
-    document.getElementById(dienasAtbildeID).value = document.getElementById(atbildeID).value};
+             document.getElementById(dienasAtbildeID).value = document.getElementById(atbildeID).value};
 
     document.getElementById(dienasID).value = daljaDienas;
 
@@ -150,7 +150,7 @@ function uzliktLaiku(){
         document.getElementById('dienasdalja').innerHTML = 'Rīts'}
     else if (laiks > 12 && laiks < 15){
         document.getElementById('dienasdalja').innerHTML = 'Diena'}
-    else if (laiks > 15 && laiks <  23){
+    else if (laiks > 15 && laiks <  24){
         document.getElementById('dienasdalja').innerHTML = 'Vakars'}
     else {
          document.getElementById('dienasdalja').innerHTML = 'Nav'}

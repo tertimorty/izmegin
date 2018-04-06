@@ -52,7 +52,7 @@
         dalja = 'diena'}
     else if (laiks >= 15 && laiks <  24){
         dalja = 'vakars'} ;
-
+       console.log('ejs laiks' + dalja);
 for(var i=0; i < todos.length; i++){ 
 j = j+1;
 
@@ -181,6 +181,7 @@ j = j+1;
 
 <%
 		if(todos[i].vakars == dalja ){
+
 %>
 
 <li id="uncompletedotraPoga<%= i+1 %>" style="display:none;">
@@ -254,6 +255,7 @@ j = j+1;
 %>
 
 <%
+if(todos[i].rits == dalja){
 		if(todos[i].ritsStavoklis !== "" ){
 %>
 <li id="completedotraPoga<%= j %>">
@@ -289,9 +291,10 @@ j = j+1;
 		</div>
 	</form>
 </li>
-	<% } %>
+	<% }} %>
 
 	<%
+	if(todos[i].diena == dalja){
 		if(todos[i].dienaStavoklis !== "" ){
 %>
 <li id="completedotraPoga<%= j %>">
@@ -327,9 +330,10 @@ j = j+1;
 		</div>
 	</form>
 </li>
-	<% } %>
+	<% }} %>
 
 	<%
+		if(todos[i].vakars == dalja){
 		if(todos[i].vakarsStavoklis !== "" ){
 %>
 <li id="completedotraPoga<%= j %>">
@@ -365,7 +369,7 @@ j = j+1;
 		</div>
 	</form>
 </li>
-	<% } %>
+	<% }} %>
 	<% }} %>
 </ul>
 	
