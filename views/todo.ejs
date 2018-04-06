@@ -19,7 +19,7 @@
 	  		<ul class="navbar-nav flex-row ml-md-auto d-md-flex" style="font-size:2em; color:Tomato; padding-right: 25px;">
 	 
 			    <li class="nav-item ">
-			  		<button style=" padding: 2px;" onclick="#" id="apkopojums" type="button" class="btn"><a href="/apkopojums">Apkopojums</a></button>
+			  		<button style=" padding: 2px; margin-right: 20px;" id="apkopojums" type="button" class="btn"><a href="/apkopojums">Apkopojums</a></button>
 			    </li>
 			    <li class="nav-item ">
 			     	<i class="fas fa-bug " title="pamâcîba" onclick="pamacibaLogs()"></i>
@@ -41,9 +41,24 @@
 
 <ul style="list-style-type:none; padding-left:5px;">
 
-<% var j = 0;      
+<% var j = 0; 
+	var dalja = '';
+ 	let d = new Date();
+    let laiks = d.getHours() +3;
+    
+    if ( laiks <= 12){
+         dalja = 'rits'}
+    else if (laiks >= 12 && laiks < 15){
+        dalja = 'diena'}
+    else if (laiks >= 15 && laiks <  24){
+        dalja = 'vakars'} ;
+
 for(var i=0; i < todos.length; i++){ 
 j = j+1;
+
+%>
+<%
+		if(todos[i].rits == dalja){
 %>
 
 <li id="uncompletedotraPoga<%= i+1 %>" style="display:none;">
@@ -53,7 +68,7 @@ j = j+1;
 			<div style="background-color: #fff; margin-bottom: 0px;" class=" border rounded col-sm-12">
 				<div style="margin-bottom: 0px;" class="form-group row">
 					<div style="padding: 10px 5px 0px 10px; margin-bottom: 0px; background-color: #fff; color:#03a9f4;" class="col-2">	
-						<button type="submit" style=" padding: 2px; background-color: #fff; color:#03a9f4;" id="otraPoga<%=j%>" class="btn poga "><i class="far fa-check-circle fa-2x "></i></button>
+						<button type="submit" onclick="myFunction1(this)" style=" padding: 2px; background-color: #fff; color:#03a9f4;" id="otraPoga<%=j%>" class="btn poga "><i class="far fa-check-circle fa-2x "></i></button>
 					</div>
 
 					<div class=" col-8 col-form-label">
@@ -72,21 +87,28 @@ j = j+1;
 					</div>
 					<div  class="col-8 border">
 						
+						<input " type="text" class="form-control-plaintext rounded atbilde" name="atbilde" id="atbilde<%=j%>" placeholder="Ierakstiet komentāru" />
 						
-						
-						<input style="display:none;" name="datums" id="datums<%=j%>" class="datums" value=""; />
-						<input style="display:none;" type="text" class="cilveks" name="cilveks" id="cilveks<%=j%>" placeholder="Ierakstiet komentāru" />
-						<input style="display:none;" type="text" class="komercvieniba" name="komercvieniba" id="komercvieniba<%=j%>" placeholder="Ierakstiet komentāru" />
+						<input style="display:none;" name="datums" id="datums<%=j%>" class="datums" value="" />
+						<input style="display:none;" name="nummurs" id="nummurs<%=j%>" class="nummurs" value="<%= todos[i].nummurs %>" />
+						<input style="display:none;" type="text" class="cilveks" name="cilveks" id="cilveks<%=j%>" />
+						<input style="display:none;" type="text" class="komercvieniba" name="komercvieniba" id="komercvieniba<%=j%>" />
 					<input style="display:none;" name="nosaukums" class="nosaukums" id="nosaukums<%=j%>" value="<%= todos[i].nosaukums %>" />
-					<input " type="text" class="form-control-plaintext rounded atbilde" name="atbilde" id="atbilde<%=j%>" placeholder="Ierakstiet komentāru" />
-						<input style="display:none;" name="atbilst" class="atbilst" id="atbilst<%=j%>" value="____"; />
-						<input style="display:none;" name="periods" class="periods" id="periods<%=j%>" value=""; />
-						<input style="display:none;" name="condit" class="condit" id="condit<%=j%>" value="<%= todos[i].condit %>"; />
-						<input style="display:none;" name="apraksts" class="apraksts" id="apraksts<%=j%>" value="<%= todos[i].apraksts %>"; />
-						
+					<input style="display:none;" name="apraksts" class="apraksts" id="apraksts<%=j%>" value="<%= todos[i].apraksts %>"; />
 
+					<input style="display:none;" name="rits" class="rits" id="rits<%=j%>" value="<%= todos[i].rits %>"; />
+					<input " type="text" class="form-control-plaintext rounded ritsAtbilde" style="display:none;" name="ritsAtbilde" id="ritsAtbilde<%=j%>" placeholder="Ierakstiet komentāru" />
+					<input style="display:none;" name="ritsStavoklis" class="ritsStavoklis" id="ritsStavoklis<%=j%>" value=""; />
+
+						<input style="display:none;" name="diena" class="diena" id="diena<%=j%>" value="<%= todos[i].diena %>"; />
+					<input " type="text" class="form-control-plaintext rounded dienaAtbilde" style="display:none;" name="dienaAtbilde" id="dienaAtbilde<%=j%>" placeholder="Ierakstiet komentāru" />
+					<input style="display:none;" name="dienaStavoklis" class="dienaStavoklis" id="dienaStavoklis<%=j%>" value=""; />
+
+						<input style="display:none;" name="vakars" class="vakars" id="vakars<%=j%>" value="<%= todos[i].vakars %>"; />
+					<input " type="text" class="form-control-plaintext rounded vakarsAtbilde" style="display:none;" name="vakarsAtbilde" id="vakarsAtbilde<%=j%>" placeholder="Ierakstiet komentāru" />
+					<input style="display:none;" name="vakarsStavoklis" class="vakarsStavoklis" id="vakarsStavoklis<%=j%>" value=""; />
 						
-							<input style="display:none;" name="nummurs" id="nummurs<%=j%>" class="nummurs" value="<%=j%>"; />
+							
 					</div>
 						<small for="text" class=" col-12 ">Ierakstīt attiecīgā darbinieka vērtējuma lapā</small>
 				</div>
@@ -94,20 +116,146 @@ j = j+1;
 		</div>
 	</form>
 </li>
+<% } %>
+
+<%
+		if(todos[i].diena == dalja ){
+%>
+
+<li id="uncompletedotraPoga<%= i+1 %>" style="display:none;">
+	<form style="margin-bottom: 0px;" method="post" id="form<%=j%>"; />
+
+		<div class="form-group row justify-content-between" style="margin-bottom: 0px;">
+			<div style="background-color: #fff; margin-bottom: 0px;" class=" border rounded col-sm-12">
+				<div style="margin-bottom: 0px;" class="form-group row">
+					<div style="padding: 10px 5px 0px 10px; margin-bottom: 0px; background-color: #fff; color:#03a9f4;" class="col-2">	
+						<button type="submit" onclick="myFunction1(this)" style=" padding: 2px; background-color: #fff; color:#03a9f4;" id="otraPoga<%=j%>" class="btn poga "><i class="far fa-check-circle fa-2x "></i></button>
+					</div>
+
+					<div class=" col-8 col-form-label">
+					<label for="text" style="margin-bottom: 0px; font-weight: bold;" ><%= todos[i].nosaukums %></label><br>
+					<small for="text"><%= todos[i].apraksts %></small>
+
+				</div>
+					<div style="padding: 10px 5px 0px 0px; margin-bottom: 0px;" class="col-2">
+						<button style=" padding: 2px;" onclick="myFunction(this)" id="prmaPoga<%=j%>" type="button" class="btn btn-warning">____</button>
+					</div>
+				</div>
+
+				<div class="form-group row AttprmaPoga<%=j%>" style="display:none;">
+					<div class="col-4">
+						<button onclick="openWin()"  type="button" class=" btn-sm btn-primary">Aizpildīt formu</button>
+					</div>
+					<div  class="col-8 border">
+						
+						<input " type="text" class="form-control-plaintext rounded atbilde" name="atbilde" id="atbilde<%=j%>" placeholder="Ierakstiet komentāru" />
+						
+						<input style="display:block;" name="datums" id="datums<%=j%>" class="datums" value="" />
+						<input style="display:block;" name="nummurs" id="nummurs<%=j%>" class="nummurs" value="<%= todos[i].nummurs %>" />
+						<input style="display:block;" type="text" class="cilveks" name="cilveks" id="cilveks<%=j%>" />
+						<input style="display:block;" type="text" class="komercvieniba" name="komercvieniba" id="komercvieniba<%=j%>" />
+					<input style="display:block;" name="nosaukums" class="nosaukums" id="nosaukums<%=j%>" value="<%= todos[i].nosaukums %>" />
+					<input style="display:block;" name="apraksts" class="apraksts" id="apraksts<%=j%>" value="<%= todos[i].apraksts %>"; />
+
+					<input style="display:block;" name="rits" class="rits" id="rits<%=j%>" value="<%= todos[i].rits %>"; />
+					<input " type="text" class="form-control-plaintext rounded ritsAtbilde" name="ritsAtbilde" id="ritsAtbilde<%=j%>" placeholder="Ierakstiet komentāru" />
+					<input style="display:block;" name="ritsStavoklis" class="ritsStavoklis" id="ritsStavoklis<%=j%>" value=""; />
+
+						<input style="display:block;" name="diena" class="diena" id="diena<%=j%>" value="<%= todos[i].diena %>"; />
+					<input " type="text" class="form-control-plaintext rounded dienaAtbilde" name="dienaAtbilde" id="dienaAtbilde<%=j%>" placeholder="Ierakstiet komentāru" />
+					<input style="display:block;" name="dienaStavoklis" class="dienaStavoklis" id="dienaStavoklis<%=j%>" value=""; />
+
+						<input style="display:block;" name="vakars" class="vakars" id="vakars<%=j%>" value="<%= todos[i].vakars %>"; />
+					<input " type="text" class="form-control-plaintext rounded vakarsAtbilde" name="vakarsAtbilde" id="vakarsAtbilde<%=j%>" placeholder="Ierakstiet komentāru" />
+					<input style="display:block;" name="vakarsStavoklis" class="vakarsStavoklis" id="vakarsStavoklis<%=j%>" value=""; />
+						
+							
+					</div>
+						<small for="text" class=" col-12 ">Ierakstīt attiecīgā darbinieka vērtējuma lapā</small>
+				</div>
+			</div>
+		</div>
+	</form>
+</li>
+<% } %>
+
+<%
+		if(todos[i].vakars == dalja ){
+%>
+
+<li id="uncompletedotraPoga<%= i+1 %>" style="display:none;">
+	<form style="margin-bottom: 0px;" method="post" id="form<%=j%>"; />
+
+		<div class="form-group row justify-content-between" style="margin-bottom: 0px;">
+			<div style="background-color: #fff; margin-bottom: 0px;" class=" border rounded col-sm-12">
+				<div style="margin-bottom: 0px;" class="form-group row">
+					<div style="padding: 10px 5px 0px 10px; margin-bottom: 0px; background-color: #fff; color:#03a9f4;" class="col-2">	
+						<button type="submit" onclick="myFunction1(this)" style=" padding: 2px; background-color: #fff; color:#03a9f4;" id="otraPoga<%=j%>" class="btn poga "><i class="far fa-check-circle fa-2x "></i></button>
+					</div>
+
+					<div class=" col-8 col-form-label">
+					<label for="text" style="margin-bottom: 0px; font-weight: bold;" ><%= todos[i].nosaukums %></label><br>
+					<small for="text"><%= todos[i].apraksts %></small>
+
+				</div>
+					<div style="padding: 10px 5px 0px 0px; margin-bottom: 0px;" class="col-2">
+						<button style=" padding: 2px;" onclick="myFunction(this)" id="prmaPoga<%=j%>" type="button" class="btn btn-warning">____</button>
+					</div>
+				</div>
+
+				<div class="form-group row AttprmaPoga<%=j%>" style="display:none;">
+					<div class="col-4">
+						<button onclick="openWin()"  type="button" class=" btn-sm btn-primary">Aizpildīt formu</button>
+					</div>
+					<div  class="col-8 border">
+						
+						<input " type="text" class="form-control-plaintext rounded atbilde" name="atbilde" id="atbilde<%=j%>" placeholder="Ierakstiet komentāru" />
+						
+						<input style="display:block;" name="datums" id="datums<%=j%>" class="datums" value="" />
+						<input style="display:block;" name="nummurs" id="nummurs<%=j%>" class="nummurs" value="<%= todos[i].nummurs %>" />
+						<input style="display:block;" type="text" class="cilveks" name="cilveks" id="cilveks<%=j%>" />
+						<input style="display:block;" type="text" class="komercvieniba" name="komercvieniba" id="komercvieniba<%=j%>" />
+					<input style="display:block;" name="nosaukums" class="nosaukums" id="nosaukums<%=j%>" value="<%= todos[i].nosaukums %>" />
+					<input style="display:block;" name="apraksts" class="apraksts" id="apraksts<%=j%>" value="<%= todos[i].apraksts %>"; />
+
+					<input style="display:block;" name="rits" class="rits" id="rits<%=j%>" value="<%= todos[i].rits %>"; />
+					<input " type="text" class="form-control-plaintext rounded ritsAtbilde" name="ritsAtbilde" id="ritsAtbilde<%=j%>" placeholder="Ierakstiet komentāru" />
+					<input style="display:block;" name="ritsStavoklis" class="ritsStavoklis" id="ritsStavoklis<%=j%>" value=""; />
+
+						<input style="display:block;" name="diena" class="diena" id="diena<%=j%>" value="<%= todos[i].diena %>"; />
+					<input " type="text" class="form-control-plaintext rounded dienaAtbilde" name="dienaAtbilde" id="dienaAtbilde<%=j%>" placeholder="Ierakstiet komentāru" />
+					<input style="display:block;" name="dienaStavoklis" class="dienaStavoklis" id="dienaStavoklis<%=j%>" value=""; />
+
+						<input style="display:block;" name="vakars" class="vakars" id="vakars<%=j%>" value="<%= todos[i].vakars %>"; />
+					<input " type="text" class="form-control-plaintext rounded vakarsAtbilde" name="vakarsAtbilde" id="vakarsAtbilde<%=j%>" placeholder="Ierakstiet komentāru" />
+					<input style="display:block;" name="vakarsStavoklis" class="vakarsStavoklis" id="vakarsStavoklis<%=j%>" value=""; />
+						
+							
+					</div>
+						<small for="text" class=" col-12 ">Ierakstīt attiecīgā darbinieka vērtējuma lapā</small>
+				</div>
+			</div>
+		</div>
+	</form>
+</li>
+<% } %>
+
 	<% } %>
 </ul>
 <hr>
 
 <ul style="list-style-type:none; padding-left:5px;">
 
-<% var j = 0;
-console.log(todos.length); 
+<% 
+var j = 0;
 for(var i=0; i < todos.length; i++){ 
-
 j = j+1;
-if(todos[i].datums !== "" ){
+	if(todos[i].datums !== "" ){
 %>
 
+<%
+		if(todos[i].ritsStavoklis !== "" ){
+%>
 <li id="completedotraPoga<%= j %>">
 	<form style="margin-bottom: 0px;">	
 		<div class="form-group row justify-content-between" style="margin-bottom: 0px; background-color: #b8b8c0">
@@ -120,12 +268,12 @@ if(todos[i].datums !== "" ){
 
 					<div class=" col-8 col-form-label">
 					<label for="text" id="completedNosaukums<%= j %>" style="margin-bottom: 0px; font-weight: bold;" ><%= todos[i].nosaukums %></label><br>
-					<small for="text"><%= todos[i].apraksts %></small>
+					<small for="text"><%= todos[i].ritsAtbilde %></small>
 
 					</div>
 
 					<div style="padding: 10px 5px 0px 0px; margin-bottom: 0px; " class="col-2">
-						<button style=" padding: 2px;" id="krasuPoga<%=j%>" type="button" class="btn btn-warning"><%= todos[i].atbilst %></button>
+						<button style=" padding: 2px;" id="krasuPoga<%=j%>" type="button" class="btn btn-warning"><%= todos[i].ritsStavoklis %></button>
 					</div>
 
 				</div>
@@ -141,6 +289,83 @@ if(todos[i].datums !== "" ){
 		</div>
 	</form>
 </li>
+	<% } %>
+
+	<%
+		if(todos[i].dienaStavoklis !== "" ){
+%>
+<li id="completedotraPoga<%= j %>">
+	<form style="margin-bottom: 0px;">	
+		<div class="form-group row justify-content-between" style="margin-bottom: 0px; background-color: #b8b8c0">
+			<div style="background-color: #b8b8c0; margin-bottom: 0px;" class=" border rounded col-sm-12">
+				<div style="margin-bottom: 0px;" class="form-group row">
+
+					<div style="padding: 10px 5px 0px 10px; margin-bottom: 0px; background-color: #b8b8c0;" class="col-2">
+						<button style=" padding: 2px; background-color: #b8b8c0;" id="otraPoga<%= j %>"  class="btn poga "><i class="fas fa-check-circle fa-2x "></i></button>
+					</div>
+
+					<div class=" col-8 col-form-label">
+					<label for="text" id="completedNosaukums<%= j %>" style="margin-bottom: 0px; font-weight: bold;" ><%= todos[i].nosaukums %></label><br>
+					<small for="text"><%= todos[i].dienaAtbilde %></small>
+
+					</div>
+
+					<div style="padding: 10px 5px 0px 0px; margin-bottom: 0px; " class="col-2">
+						<button style=" padding: 2px;" id="krasuPoga<%=j%>" type="button" class="btn btn-warning"><%= todos[i].dienaStavoklis %></button>
+					</div>
+
+				</div>
+				<div class="form-group row AttprmaPoga<%=j%>" style="display:none;">
+					<div class="col-4">
+						
+					</div>
+					<div  class="col-8 border">
+						<input type="text" class="form-control-plaintext rounded" id="staticText" value="<%= todos[i].atbilde %>">
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</li>
+	<% } %>
+
+	<%
+		if(todos[i].vakarsStavoklis !== "" ){
+%>
+<li id="completedotraPoga<%= j %>">
+	<form style="margin-bottom: 0px;">	
+		<div class="form-group row justify-content-between" style="margin-bottom: 0px; background-color: #b8b8c0">
+			<div style="background-color: #b8b8c0; margin-bottom: 0px;" class=" border rounded col-sm-12">
+				<div style="margin-bottom: 0px;" class="form-group row">
+
+					<div style="padding: 10px 5px 0px 10px; margin-bottom: 0px; background-color: #b8b8c0;" class="col-2">
+						<button style=" padding: 2px; background-color: #b8b8c0;" id="otraPoga<%= j %>"  class="btn poga "><i class="fas fa-check-circle fa-2x "></i></button>
+					</div>
+
+					<div class=" col-8 col-form-label">
+					<label for="text" id="completedNosaukums<%= j %>" style="margin-bottom: 0px; font-weight: bold;" ><%= todos[i].nosaukums %></label><br>
+					<small for="text"><%= todos[i].vakarsAtbilde %></small>
+
+					</div>
+
+					<div style="padding: 10px 5px 0px 0px; margin-bottom: 0px; " class="col-2">
+						<button style=" padding: 2px;" id="krasuPoga<%=j%>" type="button" class="btn btn-warning"><%= todos[i].vakarsStavoklis %></button>
+					</div>
+
+				</div>
+				<div class="form-group row AttprmaPoga<%=j%>" style="display:none;">
+					<div class="col-4">
+						
+					</div>
+					<div  class="col-8 border">
+						<input type="text" class="form-control-plaintext rounded" id="staticText" value="<%= todos[i].atbilde %>">
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</li>
+	<% } %>
 	<% }} %>
 </ul>
 	

@@ -34,11 +34,11 @@ document.getElementById('logins').innerHTML = profile.getName();
 console.log('shis vispar strada');
 let d = new Date();
     let laiks = d.getHours();
- $.ajax({
+ /*$.ajax({
         type: 'POST',
         url: '/laiks',
         data: {laiks: laiks},
-        });
+        }); */
 
 
  for(let i =1; i<100; i++){
@@ -56,9 +56,37 @@ function signOut() {
     document.getElementById('logins').innerHTML = 'Izlogojies';
 };
 function myFunction(ele){
+
     let id = ele.id;
     let i = id.replace('prmaPoga','');
-    let atbilstID = 'atbilst'+i
+    let daljaDienas = '';
+    
+    let dienasDalja = document.getElementById('dienasdalja').innerHTML;
+   
+    if(dienasDalja == 'Vakars'){
+        daljaDienas = 'vakars'
+    }else if(dienasDalja == 'Diena'){
+        daljaDienas = 'diena'
+    }else if (dienasDalja == 'Rīts') {
+        daljaDienas =  'rits'
+    }else {
+        daljaDienas = 'Nav laika perioda'
+    };
+
+    let dienasStavoklisID = daljaDienas+'Stavoklis'+i;
+    let dienasAtbildeID =   daljaDienas+'Atbilde'+i;
+    let atbildeID = 'atbilde'+i;
+    let dienasID = daljaDienas+i;
+   
+
+        let valueExists = document.getElementById(atbildeID);
+        if(valueExists != null){
+    document.getElementById(dienasAtbildeID).value = document.getElementById(atbildeID).value};
+
+    document.getElementById(dienasID).value = daljaDienas;
+
+
+   
     
     let class1 = ele.className;
     let  x = document.getElementsByClassName("Att"+id);
@@ -66,14 +94,19 @@ function myFunction(ele){
 	if (class1 == "btn btn-success"){
         document.getElementById(id).className = 'btn btn-danger';
         document.getElementById(id).innerHTML = 'Neatbilst'; 
-        document.getElementById(atbilstID).value = 'Neatbilst';
+        document.getElementById(dienasStavoklisID).value = 'Neatbilst';
+       
         x[0].style.display = 'flex';
     }
     else if ( class1 == "btn btn-warning" || class1 == "btn btn-danger"){    
         document.getElementById(id).className = 'btn btn-success';
         document.getElementById(id).innerHTML = 'Atbilst';
-        document.getElementById(atbilstID).value = 'Atbilst';
+        document.getElementById(dienasStavoklisID).value = 'Atbilst';
+       
         x[0].style.display = 'none';
+    }else{
+        document.getElementById(dienasStavoklisID).value = '____';
+
     }
  };
 function tava(ele){
@@ -111,6 +144,7 @@ function uzliktLaiku(){
               
     let d = new Date();
     let laiks = d.getHours();
+   
     console.log('laiks ir: ' + laiks);
     if ( laiks <= 12){
         document.getElementById('dienasdalja').innerHTML = 'Rīts'}
@@ -133,9 +167,51 @@ function uzliktLaiku(){
         if(komercvienibaExists != null ){
             document.getElementById('komercvieniba'+i).value = "komercvieniba" };
       
-        let periodsExists = document.getElementById('periods'+i);
-        if(periodsExists != null ){
-            document.getElementById('periods'+i).value =  document.getElementById('dienasdalja').innerHTML };
+      
     };
 
+};
+
+
+function myFunction1(ele){
+
+    let id = ele.id;
+    let i = id.replace('otraPoga','');
+    let iprmaPoga = 'prmaPoga'+i;
+    let daljaDienas = '';
+    
+    let dienasDalja = document.getElementById('dienasdalja').innerHTML;
+    console.log(dienasDalja);
+    if(dienasDalja == 'Vakars'){
+        daljaDienas = 'vakars'
+    }else if(dienasDalja == 'Diena'){
+        daljaDienas = 'diena'
+    }else if (dienasDalja == 'Rīts') {
+        daljaDienas =  'rits'
+    }else {
+        daljaDienas = 'Nav laika perioda'
+    };
+
+    let dienasStavoklisID = daljaDienas+'Stavoklis'+i;
+    let dienasAtbildeID =   daljaDienas+'Atbilde'+i;
+    let atbildeID = 'atbilde'+i;
+    let dienasID = daljaDienas+i;
+
+    let valueExists = document.getElementById(atbildeID);
+        if(valueExists != null){
+    document.getElementById(dienasAtbildeID).value = document.getElementById(atbildeID).value;
+
+    document.getElementById(dienasID).value = daljaDienas;
+
+
+  
+    
+    let class1 = ele.className;
+    let  x = document.getElementsByClassName("Att"+id);
+    
+        document.getElementById(dienasStavoklisID).value = document.getElementById(iprmaPoga).innerHTML;
+
+
+    
+ };
 };

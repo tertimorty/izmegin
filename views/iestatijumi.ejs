@@ -18,15 +18,17 @@
 <section>
 	<h1>Darba laiki</h1>
 	<div>
-		<% for(var i=0; i < todos.length; i++){ %>
+		<% for(var i=0; i < 1; i++){ %>
 		<label for="text" id="sak" style="margin-bottom: 0px; font-weight: bold;" ><%= todos[i].nosaukums %></label><br>
-		<p style="display:inline;">Sakot: </p><label for="text" style="margin-bottom: 0px; font-weight: bold; display:inline;" >līdz sākums +3 stundas ir rīts?</label><br>
-		<p style="display:inline;">Beidzot: </p><label for="text" style="margin-bottom: 0px; font-weight: bold;" >beigu laiks - 3 stundas ir vakars?</label>
+		<p style="display:inline;">Sakot: </p><label for="text" style="margin-bottom: 0px; font-weight: bold; display:inline;" >sākums ir līdz 12 pašlaik, bet vajag mainīt uz atvēršanās +2stundas</label><br>
+		<p style="display:inline;">Beidzot: </p><label for="text" style="margin-bottom: 0px; font-weight: bold;" >vakars ir no 15:00</label>
 <% } %>
 
 	</div>
 <form id=create>
   <div class="form-group">
+
+  	 <label for="sakums">Pašlaik vēl nestrādā var šo nemēģināt!!!</label>
     <label for="sakums">Ievadiet sakuma laiku</label>
     <input type="number" name="sakums" class="form-control" id="exampleInput" placeholder="8">
    

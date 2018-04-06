@@ -4,20 +4,32 @@ $(document).ready(function(){
   $('form').on('submit', function(){
       //var item = $('#staticText').val();
       //var todo = {item: item.val()};
+
      var user_id = $(this).closest("form").attr('id');
       
       var tabId = user_id.split("form").pop();
      
       var formData = {
         datums: $('#datums'+tabId).val(),
+        nummurs: $('#nummurs'+tabId).val(),
         cilveks: $('#cilveks'+tabId).val(),
         komercvieniba: $('#komercvieniba'+tabId).val(),
         nosaukums: $('#nosaukums'+tabId).val(),
-        atbilde: $('#atbilde'+tabId).val(),
-        atbilst: $('#atbilst'+tabId).val(),
-        periods: $('#periods'+tabId).val(),
-        apraksts:$ ('#apraksts'+tabId).val(),
-        nummurs: $('#nummurs'+tabId).val()
+        apraksts: $('#apraksts'+tabId).val(),
+
+        rits: $('#rits'+tabId).val(),
+        ritsAtbilde: $('#ritsAtbilde'+tabId).val(),
+        ritsStavoklis: $('#ritsStavoklis'+tabId).val(),
+
+        diena: $('#diena'+tabId).val(),
+        dienaAtbilde: $('#dienaAtbilde'+tabId).val(),
+        dienaStavoklis: $('#dienaStavoklis'+tabId).val(),
+
+        vakars: $('#vakars'+tabId).val(),
+        vakarsAtbilde: $('#vakarsAtbilde'+tabId).val(),
+        vakarsStavoklis: $('#vakarsStavoklis'+tabId).val(),
+  
+        
       };
      
 

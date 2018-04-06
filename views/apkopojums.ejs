@@ -15,7 +15,7 @@
 	  		<ul class="navbar-nav flex-row ml-md-auto d-md-flex" style="font-size:2em; color:Tomato; padding-right: 25px;">
 	 
 			    <li class="nav-item ">
-			  		<button style=" padding: 2px;" id="apkopojums" type="button" class="btn"><a href="/todo">Home</a></button>
+			  		<button style=" padding: 2px; margin-right: 20px;" id="apkopojums" type="button" class="btn"><a href="/todo">Home</a></button>
 			    </li>
 			    <li class="nav-item ">
 			     	<i class="fas fa-bug " title="pamâcîba" onclick="pamacibaLogs()"></i>
@@ -29,5 +29,56 @@
 		  	</ul>
 	  	</div>
 	</header>
+
+	<body>
+		
+		<table class="table">
+  <thead class="thead-dark">
+    <tr>
+     
+      <th scope="col">Datums</th>
+      <th scope="col">Cilvēks</th>
+    
+      <th scope="col">Nosaukums</th>
+      <th scope="col">Rīts</th>
+      <th scope="col">Diena</th>
+      <th scope="col">Vakars</th>
+      <th scope="col">Komentāri</th>
+    </tr>
+  </thead>
+  <tbody>
+  		   <% var j = 0;      
+for(var i=0; i < todos.length; i++){ 
+j = j+1;
+%>
+
+    <tr>
+     
+      <td><%= todos[i].datums %></td>
+      <td><%= todos[i].cilveks %></td>
+     
+      <td><%= todos[i].nosaukums %></td>
+
+
+
+      <td><%= todos[i].ritsStavoklis %></td>
+      <td><%= todos[i].dienaStavoklis %></td>
+      <td><%= todos[i].vakarsStavoklis %></td>
+
+
+      <td>	Rīta: <%= todos[i].ritsAtbilde %>    <br>
+      		Dienas: <%= todos[i].dienaAtbilde %>    <br>
+      		Vakara: <%= todos[i].vakarsAtbilde %>    <br>
+
+
+
+
+      </td>
+     
+    </tr>
+    <% } %>
+  </tbody>
+</table>
+
 
 <% include partials/footer %>
