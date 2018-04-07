@@ -29,10 +29,16 @@ document.getElementById('logins').innerHTML = profile.getName();
         }
 
     }
+
+
  }
+  let d = new Date();
+    let date1 = d.toISOString().split('T')[0];
+    document.getElementById('datumsQQ').value = date1;
+    console.log(date1)
 
 console.log('shis vispar strada');
-let d = new Date();
+//let d = new Date();
     let laiks = d.getHours();
  /*$.ajax({
         type: 'POST',
@@ -159,6 +165,9 @@ function uzliktLaiku(){
 
     let date1 = d.toISOString().split('T')[0];
     
+
+
+
     for(let i =1; i<100; i++){
         let datumsExists = document.getElementById('datums'+i);
         if(datumsExists != null ){

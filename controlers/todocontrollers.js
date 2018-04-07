@@ -1,14 +1,22 @@
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
+//cloud datubāze kurai piesledzos
 mongoose.connect('mongodb://traktors:Lazanja1@ds123029.mlab.com:23029/checkliste');
+
+// shemas datu stavoklim
 var todoSchema = new mongoose.Schema({nummurs: Number, nosaukums: String, apraksts: String });
 var todoSchema1 = new mongoose.Schema({datums: String, nummurs: Number, cilveks: String, komercvieniba: String, nosaukums: String, apraksts: String, rits: String, ritsAtbilde: String, ritsStavoklis: String, diena: String, dienaAtbilde: String, dienaStavoklis: String, vakars: String, vakarsAtbilde: String, vakarsStavoklis: String});
 
+
+//modelji
 var Todo1 = mongoose.model('Todo1', todoSchema1);
 var Todo2 = mongoose.model('Todo2', todoSchema1);
 var Todo = mongoose.model('Todo', todoSchema);
+
+
 /*
+	//nulles dati, t.i. objekti, bez datumiem, un kurus izmanto formu genereshanai
  var itemi1 = [
 
  	{datums:'', nummurs: 1, cilveks:'', komercvieniba:'',  nosaukums: "Štata vietas", apraksts: "ir nokomplektētas, visi ir ieradušies darbā", rits: "rits", ritsAtbilde: '', ritsStavoklis: '', diena: "", dienaAtbilde: '', dienaStavoklis: '', vakars: "", vakarsAtbilde: '', vakarsStavoklis: ''},
@@ -44,7 +52,7 @@ var Todo = mongoose.model('Todo', todoSchema);
 	
 
 	];
-
+	//aizsutit augsupminetos objektus uz DB dokumentu todo2
 for(let i=0;i<itemi1.length;i++){
 var itemPievienot = Todo2(itemi1[i]).save(function(err){
 if(err) throw err;
@@ -52,7 +60,7 @@ console.log('item '+ [i] + ' saved')
 });
 }; 
 
-/*
+//aizsutit augsupminetos objektus uz DB dokumentu todo1 ar shemu 1, kurai aughupminetie neatbilst....
 var item1 = {nosaukums:'darbalaiks', sakums:8, beigas:22};
 var itemPievienot = Todo1(item1).save(function(err){
 if(err) throw err;
@@ -60,27 +68,17 @@ console.log('item saved')
 });
 */
 
-//prieksh formu genereshan
-var urlencodedParser = bodyParser.urlencoded({extended: false});
+function laikaFunkcija(){
 
-module.exports = function(app){
-
-/*
-var laiks = '';
+	/*var laiks = '';
 	app.post('/laiks', urlencodedParser, function(req, res){
 		laiks = req.body.laiks;
-	
 	console.log('laiks ir: ' + laiks);
-	});
+	});*/
 
-  */
-
-
-  var dalja = '';
+	var dalja = '';
  	let d = new Date();
-
- 	
-    let laiks = d.getHours() +3 ;
+    let laiks = d.getHours() + 3 ;
     
     if ( laiks <= 12){
     	console.log("izpildarits");
@@ -91,31 +89,50 @@ var laiks = '';
     else if (laiks >= 15 && laiks <  24){
     	console.log("izpildavakars");
         dalja = 'vakars'} 
-//datums iso formātā, lai var atfiltrēti tikai shodien aizpildītos
 
-		var today = new Date().toISOString().split('T')[0];
-		
-		console.log(dalja);
+	console.log(dalja);
+	return(dalja);
+};
 
+function matricuFunkcija(){
+	var today = new Date().toISOString().split('T')[0];
+	var dalja = laikaFunkcija();
+	var meklejamaMatrica = []
+
+  		if(dalja == 'rits'){
+  			meklejamaMatrica = [
+          		{ $and: [{datums: ''}, {rits: dalja}] },
+          		{ $and: [{datums: today}, {rits: dalja}] }
+      		]
+  		};
+  		if(dalja == 'diena'){
+  			meklejamaMatrica = [
+          		{ $and: [{datums: ''}, {diena: dalja}] },
+          		{ $and: [{datums: today}, {diena: dalja}] }
+      		]
+  		};
+  		if(dalja == 'vakars'){
+  			meklejamaMatrica = [
+          		{ $and: [{datums: ''}, {vakars: dalja}] },
+          		{ $and: [{datums: today}, {vakars: dalja}] }
+      		]
+  		};
+  	return(meklejamaMatrica);
+};
+
+
+//prieksh formu genereshan
+var urlencodedParser = bodyParser.urlencoded({extended: false});
+
+module.exports = function(app){
+
+	var dalja = laikaFunkcija();
+	var meklejamaMatrica = matricuFunkcija();
 
 	app.get('/todo', function(req, res){
-
-
-	
-
-		Todo2.find({
-			$or:[
-          		{ $and: [{datums: ''}, {rits: dalja}] },
-          		{ $and: [{datums: ''}, {diena: dalja}] },
-          		{ $and: [{datums: ''}, {vakars: dalja}] },
-          		{ $and: [{datums: today}, {rits: dalja}] },
-          		{ $and: [{datums: today}, {diena: dalja}] },
-          		{ $and: [{datums: today}, {vakars: dalja}] }
-      			]
-		}, function(err,data){
+		Todo2.find({$or:meklejamaMatrica}, function(err,data){
 			if(err) throw err;
 			res.render('todo',{todos: data});
-			
 			});
 	});
 
